@@ -77,7 +77,6 @@ async def main(section, url):
             text_lvl2 = text_lvl2.split("(")[0].strip()
 
             # Tick on
-            # await buttons_lvl2[index_lvl2].click()
             await page.evaluate('(button) => button.click()', buttons_lvl2[index_lvl2])
             await asyncio.sleep(sleep_secs)
 
@@ -142,5 +141,5 @@ if __name__ == '__main__':
         last_directory = parsed_url.path.strip("/").split("/")[-1]
         dataset[last_directory] = u
 
-    for section, url in zip(dataset.keys(), dataset.values()):
+    for section, url in dataset.items():
         asyncio.run(main(section, url))
